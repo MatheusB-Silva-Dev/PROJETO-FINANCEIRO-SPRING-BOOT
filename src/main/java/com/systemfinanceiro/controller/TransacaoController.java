@@ -18,17 +18,18 @@ public class TransacaoController {
 
     @PostMapping //Metodo Post/adicionar cria objeto
     public Transacao adicionarTransacao(@RequestBody Transacao transacao) { // Anotacao @RequestBody indica que o spring espera um JSON, converte em objeto transcao
-        return transacaoService.adicionar(transacao); //chama a service para adicionar
+        return transacaoService.adicionarTransacao(transacao); //chama a service para adicionar
     }
 
     @GetMapping //Metodo Get para listar todas as transacoes
     public List<Transacao> listaTransacao() { // Passa o tipo de retorno List
-       return transacaoService.listar(); // chama a service para listar os objetos
+       return transacaoService.listarTodas(); // chama a service para listar os objetos
     }
 
     @DeleteMapping ("/{id}") //Metodo delete atraves do id da transacao o spring controla toda a lista
     public ResponseEntity<Void> removerTransacao(@PathVariable Long id) { //@PathVariable: Captura valor do ID da URL e converte automaticamente para Long
-        return transacaoService.remover(id); //chama a service para remover o objeto passando o id
+        transacaoService.removerTransacao(id); //chama a service para remover o objeto passando o id
+        return ResponseEntity.noContent().build();
     }
 
 }

@@ -16,7 +16,7 @@ public class Transacao {
     @Id
     //@GeneratedValue define com o ID será gerado automaticamente famoso auto incremento
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //atributo que salva o id definido logo acima
+    //atributo que armazena o id definido logo acima
     private Long id;
 
     //atributos que representam as colunas da tabela transacao

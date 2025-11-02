@@ -32,7 +32,8 @@ public class DividaController {
     // metodo de remover, recebe o ID na url atraves da requisicao
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removerDivida(@PathVariable Long id) { // recebe o id via url
-        return dividaService.removerDivida(id); // chama a service para remover e retorna somente o status http sem corpo void
+        dividaService.removerDivida(id); // chama a service para remover e retorna somente o status http sem corpo void
+        return ResponseEntity.noContent().build();
     }
 }
 
