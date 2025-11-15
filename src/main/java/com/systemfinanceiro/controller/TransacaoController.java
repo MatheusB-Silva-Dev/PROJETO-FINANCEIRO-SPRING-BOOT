@@ -32,6 +32,13 @@ public class TransacaoController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Transacao> atualizarTransacao(@PathVariable Long id, @RequestBody Transacao transacaoAtualizada) {
+        Transacao transacaoSalva = transacaoService.atualizarTransacao(id, transacaoAtualizada);
+        return ResponseEntity.ok(transacaoSalva);
+    }
+
+
 }
 
 

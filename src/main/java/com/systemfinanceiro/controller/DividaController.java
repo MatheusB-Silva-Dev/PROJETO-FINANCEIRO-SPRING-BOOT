@@ -35,6 +35,12 @@ public class DividaController {
         dividaService.removerDivida(id); // chama a service para remover e retorna somente o status http sem corpo void
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Divida> atualizarDivida (@PathVariable Long id, @RequestBody Divida dividaAtualizada) {
+        Divida dividaSalva = dividaService.atualizarDivida(id, dividaAtualizada);
+        return ResponseEntity.ok(dividaSalva);
+    }
 }
 
 //@RequestBody -- Recebe JSON da requisição e converte em objeto Divida automaticamente
