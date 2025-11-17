@@ -29,13 +29,17 @@ public class TransacaoController {
     @DeleteMapping ("/{id}") //Metodo delete atraves do id da transacao o spring controla toda a lista
     public ResponseEntity<Void> removerTransacao(@PathVariable Long id) { //@PathVariable: Captura valor do ID da URL e converte automaticamente para Long
         transacaoService.removerTransacao(id); //chama a service para remover o objeto passando o id
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); //retorna 204 indicando sucesso sem corpo na resposta
+
     }
 
+    //metodo put que atualiza atraves do id passado pela requisição
     @PutMapping("/{id}")
+    //aqui não e void retorna o objeto Divida
+    //recebe o id e o transacaoAtualizada que vem do corpo da requisição e o spring converte
     public ResponseEntity<Transacao> atualizarTransacao(@PathVariable Long id, @RequestBody Transacao transacaoAtualizada) {
-        Transacao transacaoSalva = transacaoService.atualizarTransacao(id, transacaoAtualizada);
-        return ResponseEntity.ok(transacaoSalva);
+        Transacao transacaoSalva = transacaoService.atualizarTransacao(id, transacaoAtualizada);//chamando a service passando o id e o JSON com os atributos para atualizar
+        return ResponseEntity.ok(transacaoSalva);//corpo da requisiçao com a atualização, retorna status HTTP 200 junto com o objeto atualizado no corpo
     }
 
 

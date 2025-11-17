@@ -33,13 +33,18 @@ public class DividaController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removerDivida(@PathVariable Long id) { // recebe o id via url
         dividaService.removerDivida(id); // chama a service para remover e retorna somente o status http sem corpo void
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); //retorna 204 indicando sucesso sem corpo na resposta
+
     }
 
+    //metodo put que atualiza atraves do id passado pela requisição
     @PutMapping("/{id}")
+    //aqui não e void retorna o objeto Divida
+    //recebe o id e o dividaAtualizada que vem do corpo da requisição e o spring converte
     public ResponseEntity<Divida> atualizarDivida (@PathVariable Long id, @RequestBody Divida dividaAtualizada) {
-        Divida dividaSalva = dividaService.atualizarDivida(id, dividaAtualizada);
-        return ResponseEntity.ok(dividaSalva);
+        //dividaSalva serve para receber o objeto atualizado
+        Divida dividaSalva = dividaService.atualizarDivida(id, dividaAtualizada); // chamando a service passando o id e o JSON com os atributos para atualizar
+        return ResponseEntity.ok(dividaSalva); //corpo da requisiçao com a atualização, retorna status HTTP 200 junto com o objeto atualizado no corpo
     }
 }
 
