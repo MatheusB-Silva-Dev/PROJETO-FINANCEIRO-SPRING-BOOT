@@ -1,7 +1,7 @@
 # Projeto Financeiro – Spring Boot
 
 Este projeto é a evolução do sistema que fizemos em **Java puro**, agora usando **Spring Boot** e **JPA/Hibernate**.  
-Ele serve para **gerenciar dívidas e transações** de forma prática e organizada, funcionando como uma boa vitrine de estudos e portfólio.
+Ele serve para **gerenciar dívidas e transações** de forma prática e organizada, funcionando como uma boa vitrine de estudos.
 
 ---
 
